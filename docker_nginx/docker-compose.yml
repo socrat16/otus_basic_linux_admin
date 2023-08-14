@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    apache:
+        image: httpd:2.4.41
+        expose:
+            - 9915
+            - 9916
+            - 9917
+        volumes:
+            - /var/www/html:/var/www/html
+            - /var/www/html1:/var/www/html1
+            - /var/www/html2:/var/www/html2
+            - ./httpd.conf:/usr/local/apache2/httpd.conf
+            - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+
+
+    nginx:
+        image: nginx:1.18
+        ports:
+            - 80:80
+
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+            - /usr/share/nginx/html:/usr/share/nginx/html
+
+
+                       
+        depends_on:
+           - apache
