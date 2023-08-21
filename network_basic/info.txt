@@ -11,3 +11,23 @@
 файлы конфигурации сети настроены - 4 балла
 настроен адрес dns сервера - 2 балла
 Статус "Принято" ставится от 6 баллов.
+
+
+Итого:
+Файл: /etc/netplan/01-netcfg.yaml
+# This file describes the network interfaces available on your system
+# For more information, see netplan(5).
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses: [10.128.0.21/24, 192.168.0.55/8]
+      routes:
+        - to: default
+          via: 10.128.0.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+ 
