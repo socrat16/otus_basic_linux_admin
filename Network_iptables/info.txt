@@ -93,3 +93,12 @@ iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
 apt install iptables-persistent netfilter-persistent
 netfilter-persistent save
 netfilter-persistent start
+
+
+
+
+
+
+
+
+
