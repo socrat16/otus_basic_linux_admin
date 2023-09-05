@@ -66,6 +66,19 @@ iptables -A OUTPUT -o enp0s3 -p TCP --sport 22 -j ACCEPT
 # Редирект порта
 iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
 
+https://habr.com/ru/post/324276/
+
+iptables -t nat -A PREROUTING -p tcp --dport 5555 -j REDIRECT --to-port 22
+iptables -t nat -A OUTPUT -p tcp -s 127.0.0.1 --dport 5555 -j REDIRECT --to-ports 22
+iptables -A INPUT -p tcp --dport 5555 -j ACCEPT
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+iptables -t mangle -A PREROUTING -p tcp --dport 22 -j DROP
+iptables -P INPUT DROP
+
+
+
+
 # Сохранение и восстановление значений
 iptables-save > ./iptables.rules
 iptables-restore < ./iptables.rules
