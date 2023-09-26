@@ -12,6 +12,8 @@
 - Подключение экспортера состояния "железа" node_exporter;
 - Визуализация данных с помощью Grafana.
 
+ <bold> Установить и настроить систему мониторинга Prometheus на работу с node_exporter и визуализацией через Grafana. </bold>
+
 # Установка утилит мониторинга
 apt install -y {jnet,h,io,if,a}top iptraf-ng nmon
 
