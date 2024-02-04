@@ -15,8 +15,13 @@ do
     TABLES=$(mysql -uroot $DB_NAME -e "SHOW TABLES;" | awk '{ print $1}' | grep -v '^Tables' )
     for TABLE in $TABLES
     do
-        mysqldump -uroot  $DB_NAME $TABLE > "${BACKUP_DIR}/${DB_NAME}/${TABLE}.sql" 
+        mysqldump --skip-opt -uroot   $DB_NAME $TABLE > "${BACKUP_DIR}/${DB_NAME}/${TABLE}.sql" 
     
     done
 
 done
+
+
+
+# mysql -uroot  digmath < mysql_bac/digmath/prod_dig.sql таблица из бекапа
+
