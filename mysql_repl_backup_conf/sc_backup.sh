@@ -224,3 +224,8 @@ mysql -u root -p < dump-data.sql
 mysqlbinlog --start-position=4596 binlog.000004 | mysql
 
 
+
+Порядок действий (binlog position based replication) 
+1. Снимаем копию с мастера 2. Проверяем позицию бинлога 3. Создаем пользователя для репликации 4. Меняем UUID (/var/lib/mysql/auto.cnf) 5. Поднимаем копию на слейве 6. Меняем server_id на слейве 7. Запускаем команду CHАNGE SOURC
+EПорядок действий (GTID replication) 1. Снимаем копию с мастера 2. Создаем пользователя для репликации 3. Меняем UUID (/var/lib/mysql/auto.cnf) 4. Поднимаем копию на слейве 5. Меняем server_id на слейве 6. Запускаем команду CHАNGE SOURCEКонфиг Source GTID [mysqld] server-id = 1 log-bin = mysql-bin binlog_format = row gtid-mode=ON enforce-gtid-consistency log-replica-updatesКонфиг Replica GTID [mysqld] server-id = 2 log-bin = mysql-bin relay-log = relay-log-server read-only = ON gtid-mode=ON enforce-gtid-consistency log-replica-updates
+
