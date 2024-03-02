@@ -144,7 +144,7 @@ dpkg -i logstash-8.9.1-amd64.deb
 #cp -R /etc/elasticsearch/certs /etc/logstash/config
 #chown -R root:logstash /etc/logstash/config
 
-systemctl enable --now logstash.service
+systemctl ienable --now logstash.service
 
 ######
 # logstash config
@@ -198,7 +198,7 @@ dpkg -i filebeat-8.9.1-amd64.deb
 
 sudo nano /etc/filebeat/filebeat.yml
 
-# Закомментарить output.elasticsearch
+# Закомментарить output.elasticsearchiu
 ##########################################
 filebeat.inputs:
 - type: filestream
